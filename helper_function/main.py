@@ -1,19 +1,16 @@
 import cv2
 import numpy as np
 
-class bw():
-    def __init__(self):
-        pass
-    
+class image_filter():
+
     def gray(image):
         grayImage=cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         return grayImage
 
     def face(image):
-        faceCascade=cv2.CascadeClassifier(cascPath)
-        grayImage=cv2.cvtColor(originalImage, cv2.COLOR_2GBGRRAY)
-        faces=faceCascade.detectMultiScale
-        (
+        faceCascade=cv2.CascadeClassifier('frontalface.xml')
+        grayImage=cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        faces=faceCascade.detectMultiScale(
             gray,
             scaleFactor=1.1,
             minNeighbour=5,
