@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AutoPDF_MainWindow</class>
+ <widget class="QWidget" name="AutoPDF_MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1132</width>
+    <height>736</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AutoPDF</string>
+  </property>
+  <widget class="QLabel" name="previewImageLabel">
+   <property name="geometry">
+    <rect>
+     <x>695</x>
+     <y>98</y>
+     <width>344</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="documentPreviewLabel">
+   <property name="geometry">
+    <rect>
+     <x>695</x>
+     <y>39</y>
+     <width>281</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Document Preview</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="importPushButton">
+   <property name="geometry">
+    <rect>
+     <x>88</x>
+     <y>98</y>
+     <width>167</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>22</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bwPushButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>169</y>
+     <width>215</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Black And White</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="prevPushButton">
+   <property name="geometry">
+    <rect>
+     <x>695</x>
+     <y>666</y>
+     <width>43</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nextPushButton">
+   <property name="geometry">
+    <rect>
+     <x>996</x>
+     <y>666</y>
+     <width>43</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="pageStatusLabel">
+   <property name="geometry">
+    <rect>
+     <x>751</x>
+     <y>666</y>
+     <width>231</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0/0 Page</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
