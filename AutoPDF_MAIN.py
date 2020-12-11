@@ -13,6 +13,7 @@ class Ui_AutoPDF_MainWindow(object):
 
         self.preview_manager = previewManager()
         self.imageList = []
+        self.bwImageList = []
 
     def setupUi(self, AutoPDF_MainWindow):
         
@@ -106,7 +107,8 @@ class Ui_AutoPDF_MainWindow(object):
             )
 
     def bwPushButtonAction(self):
-        pass
+        for imgs in self.preview_manager.image_list:
+            self.bwImageList.append()
 
     def nextPushButtonAction(self):
         pass
