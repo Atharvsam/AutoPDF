@@ -11,6 +11,7 @@ During these Corona Times, we have to submit all our assignments, homeworks and 
 - Word Finding
 - Text Add
 - Face Detection
+- Takes less memory than other apps built for similar purposes
 
 ## Language Used
 -Python
