@@ -8,16 +8,19 @@ class image_filter():
         return grayImage
 
     def face(image):
-        faceCascade=cv2.CascadeClassifier('frontalface.xml')
+        face_list = []
+        faceCascade=cv2.CascadeClassifier('haar/haarcascade_frontalface_default.xml')
         grayImage=cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         faces=faceCascade.detectMultiScale(
-            gray,
-            scaleFactor=1.1,
+            grayImage,
+            1.1,
             minNeighbour=5,
             minSize=(30,30),
-            flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+            flags=cv2.CV_HAAR_SCALE_IMAGE
         )
-        return faces
+        for (x,y,w,h) in faces:
+            face_list.append(image[y:y+h, x:x+w])
+        return face_list
 
 class image_editing():
     

@@ -26,6 +26,7 @@ class Ui_AutoPDF_MainWindow(object):
         self.end_coord = (0,0)
 
         self.pdf_list = []
+        self.face_list = []
 
         self.aCrp = autoCrop()
 
@@ -125,6 +126,14 @@ class Ui_AutoPDF_MainWindow(object):
         self.crtPDFPushButton.setObjectName("crtPDFPushButton")
         self.crtPDFPushButton.clicked.connect(self.crtPDFPushButtonAction)
 
+        self.detFacePushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.detFacePushButton.setGeometry(QtCore.QRect(360, 170, 215, 43))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.detFacePushButton.setFont(font)
+        self.detFacePushButton.setObjectName("detFacePushButton")
+        self.detFacePushButton.clicked.connect(self.detFacePushButtonAction)
+
         self.retranslateUi(AutoPDF_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(AutoPDF_MainWindow)
 
@@ -132,7 +141,7 @@ class Ui_AutoPDF_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         AutoPDF_MainWindow.setWindowTitle(_translate("AutoPDF_MainWindow", "AutoPDF"))
         AutoPDF_MainWindow.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(81,74,74)"))
-        
+        AutoPDF_MainWindow.setWindowIcon(QtGui.QIcon('images/logo.png'))
         self.documentPreviewLabel.setText(_translate("AutoPDF_MainWindow", "Document Preview"))
         self.documentPreviewLabel.setStyleSheet(_translate("AutoPDF_MainWindow", "color:rgb(255,255,255)"))
 
@@ -164,6 +173,9 @@ class Ui_AutoPDF_MainWindow(object):
 
         self.crtPDFPushButton.setText(_translate("AutoPDF_MainWindow", "Create PDF"))
         self.crtPDFPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(255,187,28)"))
+
+        self.detFacePushButton.setText(_translate("AutoPDF_MainWindow", "Detect Faces"))
+        self.detFacePushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color: rgb(194, 94, 255);border-radius:15"))
 
     def importPushButtonAction(self):
 
@@ -329,6 +341,11 @@ class Ui_AutoPDF_MainWindow(object):
                 temp.pop(0)
                 print(dir_path)
                 temp_img.save(dir_path[0], save_all=True, append_images=temp)
+
+    def detFacePushButtonAction(self):
+        self.face_list = image_filter.face(self.preview_manager.image_list[self.preview_manager.image_index])
+
+
 
             
 
