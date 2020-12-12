@@ -137,15 +137,15 @@ class Ui_AutoPDF_MainWindow(object):
         self.documentPreviewLabel.setStyleSheet(_translate("AutoPDF_MainWindow", "color:rgb(255,255,255)"))
 
         self.importPushButton.setText(_translate("AutoPDF_MainWindow", "Import"))
-        self.importPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(0,255,0)"))
+        self.importPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(0,255,0);border-radius:20;border:3px solid yellow"))
 
         self.bwPushButton.setText(_translate("AutoPDF_MainWindow", "Black And White"))
         self.bwPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(255,255,255)"))
 
         self.prevPushButton.setText(_translate("AutoPDF_MainWindow", "<"))
-        self.prevPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(108, 122, 185)"))
+        self.prevPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(108, 122, 185);border-radius:10"))
         self.nextPushButton.setText(_translate("AutoPDF_MainWindow", ">"))
-        self.nextPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(108, 122, 185)"))
+        self.nextPushButton.setStyleSheet(_translate("AutoPDF_MainWindow", "background-color:rgb(108, 122, 185);border-radius:10"))
         
         self.pageStatusLabel.setText(_translate("AutoPDF_MainWindow", "0/0 Page"))
         self.pageStatusLabel.setStyleSheet(_translate("AutoPDF_MainWindow", "color:rgb(255,255,255)"))
@@ -266,6 +266,21 @@ class Ui_AutoPDF_MainWindow(object):
             img = self.preview_manager.image_list[self.preview_manager.image_index].copy()
 
         self.save_img, self.start_coord, self.end_coord = imedit.manual_crop(img)
+
+        if self.save_img:
+            self.preview_manager.image_list[self.preview_manager.image_index] = img[int(img.shape[1]/541)*self.start_coord[1]:int(img.shape[1]/541)*self.end_coord[1], int(img.shape[0]/344)*self.start_coord[0]:int(img.shape[0]/344)*self.end_coord[0]]
+
+        image = cv2.resize(self.preview_manager.image_list[self.preview_manager.image_index], (344,541))
+        self.previewImageLabel.setPixmap(
+                QtGui.QPixmap.fromImage(
+                    QtGui.QImage(
+                        image.data, 
+                        image.shape[1], 
+                        image.shape[0],
+                        QtGui.QImage.Format_RGB888
+                    ).rgbSwapped()
+                )
+            )
 
     def autoCropPushButtonAction(self):
         if self.preview_manager.bw_mode == False:

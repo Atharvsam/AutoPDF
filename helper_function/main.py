@@ -28,6 +28,7 @@ class image_editing():
         self.org_img_copy = None
 
     def manual_crop(self, org_img_copy):
+        org_img_copy = cv2.resize(org_img_copy, (344, 541))
         self.org_img_copy = org_img_copy
         self.copy_img = self.org_img_copy
         cv2.namedWindow('crop_editor')
