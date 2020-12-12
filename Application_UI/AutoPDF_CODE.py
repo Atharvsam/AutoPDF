@@ -71,6 +71,13 @@ class Ui_AutoPDF_MainWindow(object):
         font.setPointSize(16)
         self.autoCropPushButton.setFont(font)
         self.autoCropPushButton.setObjectName("autoCropPushButton")
+        self.crtPDFPushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.crtPDFPushButton.setGeometry(QtCore.QRect(80, 650, 331, 71))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(22)
+        self.crtPDFPushButton.setFont(font)
+        self.crtPDFPushButton.setObjectName("crtPDFPushButton")
 
         self.retranslateUi(AutoPDF_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(AutoPDF_MainWindow)
@@ -88,6 +95,7 @@ class Ui_AutoPDF_MainWindow(object):
         self.delPushButton.setText(_translate("AutoPDF_MainWindow", "Delete This Page"))
         self.manCropPushButton.setText(_translate("AutoPDF_MainWindow", "Manual Crop"))
         self.autoCropPushButton.setText(_translate("AutoPDF_MainWindow", "Auto Crop"))
+        self.crtPDFPushButton.setText(_translate("AutoPDF_MainWindow", "Create PDF"))
 
 
 if __name__ == "__main__":
