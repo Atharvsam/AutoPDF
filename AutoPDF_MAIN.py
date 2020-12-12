@@ -12,6 +12,7 @@ import fpdf
 
 from helper_function.main import *
 from helper_function.auto_crop_utils import autoCrop
+from AutoPDF_Face_Detect_MAIN import Ui_detFace
 
 class Ui_AutoPDF_MainWindow(object):
 
@@ -244,16 +245,28 @@ class Ui_AutoPDF_MainWindow(object):
     def prevPushButtonAction(self):
         image = self.preview_manager.prev_image()
         image = cv2.resize(image, (344,541))
-        self.previewImageLabel.setPixmap(
+        if self.preview_manager.bw_mode:
+            self.previewImageLabel.setPixmap(
                 QtGui.QPixmap.fromImage(
                     QtGui.QImage(
                         image.data, 
                         image.shape[1], 
                         image.shape[0],
-                        QtGui.QImage.Format_RGB888
-                    ).rgbSwapped()
+                        QtGui.QImage.Format_Grayscale8
+                    )
                 )
             )
+        else:
+            self.previewImageLabel.setPixmap(
+                    QtGui.QPixmap.fromImage(
+                        QtGui.QImage(
+                            image.data, 
+                            image.shape[1], 
+                            image.shape[0],
+                            QtGui.QImage.Format_RGB888
+                        ).rgbSwapped()
+                    )
+                )
         self.updateStatusLabel()
 
     def updateStatusLabel(self):
@@ -343,7 +356,13 @@ class Ui_AutoPDF_MainWindow(object):
                 temp_img.save(dir_path[0], save_all=True, append_images=temp)
 
     def detFacePushButtonAction(self):
-        self.face_list = image_filter.face(self.preview_manager.image_list[self.preview_manager.image_index])
+        if len(self.preview_manager.image_list)!=0:
+            self.face_list = image_filter.face(self.preview_manager.image_list[self.preview_manager.image_index])
+            if len(self.face_list)!=0:
+                detFace = QtWidgets.QWidget()
+                ui = Ui_detFace()
+                ui.setupUi(detFace, self.face_list)
+                detFace.show()
 
 
 
