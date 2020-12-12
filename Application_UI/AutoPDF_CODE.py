@@ -59,12 +59,18 @@ class Ui_AutoPDF_MainWindow(object):
         self.delPushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
         self.delPushButton.setGeometry(QtCore.QRect(500, 640, 121, 31))
         self.delPushButton.setObjectName("delPushButton")
-        self.bwPushButton_2 = QtWidgets.QPushButton(AutoPDF_MainWindow)
-        self.bwPushButton_2.setGeometry(QtCore.QRect(80, 230, 215, 43))
+        self.manCropPushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.manCropPushButton.setGeometry(QtCore.QRect(80, 230, 215, 43))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.bwPushButton_2.setFont(font)
-        self.bwPushButton_2.setObjectName("bwPushButton_2")
+        self.manCropPushButton.setFont(font)
+        self.manCropPushButton.setObjectName("manCropPushButton")
+        self.autoCropPushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.autoCropPushButton.setGeometry(QtCore.QRect(80, 290, 215, 43))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.autoCropPushButton.setFont(font)
+        self.autoCropPushButton.setObjectName("autoCropPushButton")
 
         self.retranslateUi(AutoPDF_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(AutoPDF_MainWindow)
@@ -80,7 +86,8 @@ class Ui_AutoPDF_MainWindow(object):
         self.pageStatusLabel.setText(_translate("AutoPDF_MainWindow", "0/0 Page"))
         self.delAllPushButton.setText(_translate("AutoPDF_MainWindow", "Remove All Pages"))
         self.delPushButton.setText(_translate("AutoPDF_MainWindow", "Delete This Page"))
-        self.bwPushButton_2.setText(_translate("AutoPDF_MainWindow", "Manual Crop"))
+        self.manCropPushButton.setText(_translate("AutoPDF_MainWindow", "Manual Crop"))
+        self.autoCropPushButton.setText(_translate("AutoPDF_MainWindow", "Auto Crop"))
 
 
 if __name__ == "__main__":

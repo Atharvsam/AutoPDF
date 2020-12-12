@@ -159,7 +159,7 @@
     <string>Delete This Page</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bwPushButton_2">
+  <widget class="QPushButton" name="manCropPushButton">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -175,6 +175,24 @@
    </property>
    <property name="text">
     <string>Manual Crop</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="autoCropPushButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>290</y>
+     <width>215</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Auto Crop</string>
    </property>
   </widget>
  </widget>

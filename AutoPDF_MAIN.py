@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 
 from helper_function.main import *
+from helper_function.auto_crop_utils import autoCrop
 
 class Ui_AutoPDF_MainWindow(object):
 
@@ -17,6 +18,11 @@ class Ui_AutoPDF_MainWindow(object):
         self.imageList = []
         self.bwImageList = []
         self.bwmode = False
+        self.save_img = False
+        self.start_coord = (0,0)
+        self.end_coord = (0,0)
+
+        self.aCrp = autoCrop()
 
     def setupUi(self, AutoPDF_MainWindow):
         
@@ -89,6 +95,22 @@ class Ui_AutoPDF_MainWindow(object):
         self.delPushButton.setObjectName("delPushButton")
         self.delPushButton.clicked.connect(self.delPushButtonAction)
 
+        self.manCropPushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.manCropPushButton.setGeometry(QtCore.QRect(80, 230, 215, 43))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.manCropPushButton.setFont(font)
+        self.manCropPushButton.setObjectName("manCropPushButton")
+        self.manCropPushButton.clicked.connect(self.manCropPushButtonAction)
+
+        self.autoCropPushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.autoCropPushButton.setGeometry(QtCore.QRect(80, 290, 215, 43))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.autoCropPushButton.setFont(font)
+        self.autoCropPushButton.setObjectName("autoCropPushButton")
+        self.autoCropPushButton.clicked.connect(self.autoCropPushButtonAction)
+
         self.retranslateUi(AutoPDF_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(AutoPDF_MainWindow)
 
@@ -103,6 +125,8 @@ class Ui_AutoPDF_MainWindow(object):
         self.pageStatusLabel.setText(_translate("AutoPDF_MainWindow", "0/0 Page"))
         self.delAllPushButton.setText(_translate("AutoPDF_MainWindow", "Remove All Pages"))
         self.delPushButton.setText(_translate("AutoPDF_MainWindow", "Delete This Page"))
+        self.manCropPushButton.setText(_translate("AutoPDF_MainWindow", "Manual Crop"))
+        self.autoCropPushButton.setText(_translate("AutoPDF_MainWindow", "Auto Crop"))
 
     def importPushButtonAction(self):
 
@@ -122,6 +146,7 @@ class Ui_AutoPDF_MainWindow(object):
                     ).rgbSwapped()
                 )
             )
+        self.updateStatusLabel()
 
     def bwPushButtonAction(self):
         for imgs in self.preview_manager.image_list:
@@ -183,13 +208,45 @@ class Ui_AutoPDF_MainWindow(object):
         self.updateStatusLabel()
 
     def updateStatusLabel(self):
-        self.pageStatusLabel.setText("{0}/{1} Pages".format(self.preview_manager.image_index, len(self.imagePaths)))
+        self.pageStatusLabel.setText("{0}/{1} Pages".format(self.preview_manager.image_index+1, len(self.preview_manager.image_list)))
 
     def delPushButtonAction(self):
-        pass
+        if self.preview_manager.bw_mode:
+            self.preview_manager.bwImageList.pop(self.preview_manager.image_index)
+        else:
+            self.preview_manager.image_list.pop(self.preview_manager.image_index)
+        self.updateStatusLabel()
     
     def delAllPushButtonAction(self):
-        pass
+        self.preview_manager.image_list = []
+        self.preview_manager.bwImageList = []
+        self.updateStatusLabel()
+
+    def manCropPushButtonAction(self):
+        if self.preview_manager.bw_mode:
+            img = self.preview_manager.bwImageList[self.preview_manager.image_index].copy()
+        else:
+            img = self.preview_manager.image_list[self.preview_manager.image_index].copy()
+
+        self.save_img, self.start_coord, self.end_coord = imedit.manual_crop(img)
+
+    def autoCropPushButtonAction(self):
+        if self.preview_manager.bw_mode == False:
+            temp_list = []
+            for img in self.preview_manager.image_list:
+                temp_list.append(self.aCrp.main(img))
+            self.preview_manager.image_list = temp_list
+            image = cv2.resize(self.preview_manager.image_list[self.preview_manager.image_index], (344,541))
+            self.previewImageLabel.setPixmap(
+                    QtGui.QPixmap.fromImage(
+                        QtGui.QImage(
+                            image.data, 
+                            image.shape[1], 
+                            image.shape[0],
+                            QtGui.QImage.Format_RGB888
+                        ).rgbSwapped()
+                    )
+                )
 
 if __name__ == "__main__":
     import sys
