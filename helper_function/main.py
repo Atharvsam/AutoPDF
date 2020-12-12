@@ -18,3 +18,43 @@ class image_filter():
             flags=cv2.cv.CV_HAAR_SCALE_IMAGE
         )
         return faces
+
+class image_editing():
+    
+    def __init__(self):
+        self.past_coord = (-1, -1)
+        self.drag_active = False
+        self.curr_coord = (0, 0)
+        self.org_img_copy = None
+
+    def manual_crop(self, org_img_copy):
+        self.org_img_copy = org_img_copy
+        self.copy_img = self.org_img_copy
+        cv2.namedWindow('crop_editor')
+        cv2.setMouseCallback('crop_editor', self.crop_zone)
+
+        while True:
+
+            cv2.imshow('crop_editor', self.org_img_copy.copy())
+            k = cv2.waitKey(5) & 0xFF
+            if k == 27:
+                cv2.destroyAllWindows()
+                return False, self.past_coord, self.curr_coord
+            elif k == ord('s'):
+                cv2.destroyAllWindows()
+                return True, self.past_coord, self.curr_coord
+            elif k == ord('c'):
+                self.org_img_copy = self.copy_img
+
+    def crop_zone(self, event, x, y, flags, param):
+        
+        if event == cv2.EVENT_LBUTTONDOWN:
+            self.org_img_copy = self.copy_img
+            self.drag_active = True
+            self.past_coord = (x,y)
+        elif event == cv2.EVENT_LBUTTONUP:
+            self.drag_active = False
+            cv2.rectangle(self.org_img_copy, self.past_coord, (x,y), (0,255,0), 1)
+        self.curr_coord = (x, y)
+
+imedit = image_editing()

@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>AutoPDF</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(81, 74, 74)</string>
+  </property>
   <widget class="QLabel" name="previewImageLabel">
    <property name="geometry">
     <rect>
@@ -59,6 +65,9 @@
      <pointsize>22</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(0, 255, 0)</string>
+   </property>
    <property name="text">
     <string>Import</string>
    </property>
@@ -94,6 +103,9 @@
     <font>
      <pointsize>14</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(108, 122, 185)</string>
    </property>
    <property name="text">
     <string>&lt;</string>
@@ -142,6 +154,10 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 23, 112);
+color: rgb(255, 255, 102);</string>
+   </property>
    <property name="text">
     <string>Remove All Pages</string>
    </property>
@@ -155,11 +171,15 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 118, 84);
+color: rgb(125, 20, 132);</string>
+   </property>
    <property name="text">
     <string>Delete This Page</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bwPushButton_2">
+  <widget class="QPushButton" name="manCropPushButton">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -175,6 +195,43 @@
    </property>
    <property name="text">
     <string>Manual Crop</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="autoCropPushButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>290</y>
+     <width>215</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Auto Crop</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="crtPDFPushButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>650</y>
+     <width>331</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>22</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Create PDF</string>
    </property>
   </widget>
  </widget>
