@@ -133,11 +133,16 @@ class autoCrop():
         x2 = self.largest_x(_pnts)
         y2 = self.largest_y(_pnts)
 
-        point1 = self.euclid_dist_farthest(_pnts, x1, x2)
+        point1 = self.euclid_dist_farthest(_pnts, x1, y1)
         point2 = self.euclid_dist_farthest(_pnts, x1, y2)
         max_x = max(point1[0], point2[0])
 
-        return self.copy_image[y1:y2, x1:max_x+int(max_x*5/100)]
+        curr_state = np.float32([[x1, y1], [point2[0], point2[1]], [x1, y2], [point1[0], point1[1]]])
+        finl_state = np.float32([[0, 0], [self.copy_image.shape[1], 0], [0, self.copy_image.shape[0]], [self.copy_image.shape[1], self.copy_image.shape[0]]])
+
+        persp = cv2.getPerspectiveTransform(curr_state, finl_state)
+
+        return cv2.warpPerspective(self.copy_image, persp, (self.copy_image.shape[1], self.copy_image.shape[0]))
 
 
 
