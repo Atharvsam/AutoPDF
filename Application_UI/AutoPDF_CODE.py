@@ -15,7 +15,7 @@ class Ui_AutoPDF_MainWindow(object):
         AutoPDF_MainWindow.setObjectName("AutoPDF_MainWindow")
         AutoPDF_MainWindow.resize(1132, 736)
         AutoPDF_MainWindow.setAutoFillBackground(False)
-        AutoPDF_MainWindow.setStyleSheet("background-color:rgb(81, 74, 74)")
+        AutoPDF_MainWindow.setStyleSheet("background-color:rgb(255, 176, 123)")
         self.previewImageLabel = QtWidgets.QLabel(AutoPDF_MainWindow)
         self.previewImageLabel.setGeometry(QtCore.QRect(695, 98, 344, 541))
         self.previewImageLabel.setText("")
@@ -98,6 +98,17 @@ class Ui_AutoPDF_MainWindow(object):
         self.detFacePushButton.setFont(font)
         self.detFacePushButton.setStyleSheet("background-color: rgb(194, 94, 255);")
         self.detFacePushButton.setObjectName("detFacePushButton")
+        self.logoLabel = QtWidgets.QLabel(AutoPDF_MainWindow)
+        self.logoLabel.setGeometry(QtCore.QRect(70, 390, 261, 211))
+        self.logoLabel.setText("")
+        self.logoLabel.setObjectName("logoLabel")
+        self.pushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.pushButton.setGeometry(QtCore.QRect(450, 480, 161, 51))
+        self.pushButton.setStyleSheet("background-color:rgb(255, 176, 123)")
+        self.pushButton.setObjectName("pushButton")
+        self.label = QtWidgets.QLabel(AutoPDF_MainWindow)
+        self.label.setGeometry(QtCore.QRect(454, 550, 101, 20))
+        self.label.setObjectName("label")
 
         self.retranslateUi(AutoPDF_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(AutoPDF_MainWindow)
@@ -117,6 +128,8 @@ class Ui_AutoPDF_MainWindow(object):
         self.autoCropPushButton.setText(_translate("AutoPDF_MainWindow", "Auto Crop"))
         self.crtPDFPushButton.setText(_translate("AutoPDF_MainWindow", "Create PDF"))
         self.detFacePushButton.setText(_translate("AutoPDF_MainWindow", "Detect Faces"))
+        self.pushButton.setText(_translate("AutoPDF_MainWindow", "Android Integration"))
+        self.label.setText(_translate("AutoPDF_MainWindow", "Coming Soon!"))
 
 
 if __name__ == "__main__":

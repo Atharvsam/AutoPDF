@@ -135,6 +135,17 @@ class Ui_AutoPDF_MainWindow(object):
         self.detFacePushButton.setObjectName("detFacePushButton")
         self.detFacePushButton.clicked.connect(self.detFacePushButtonAction)
 
+        self.pushButton = QtWidgets.QPushButton(AutoPDF_MainWindow)
+        self.pushButton.setGeometry(QtCore.QRect(450, 480, 161, 51))
+        self.pushButton.setStyleSheet("background-color:rgb(255, 176, 123)")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.setText("Android Integration")
+        self.label = QtWidgets.QLabel(AutoPDF_MainWindow)
+        self.label.setGeometry(QtCore.QRect(454, 550, 101, 20))
+        self.label.setObjectName("label")
+        self.label.setText("Coming Soon!!")
+        self.label.setStyleSheet("color:rgb(255,255,255)")
+
         self.retranslateUi(AutoPDF_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(AutoPDF_MainWindow)
 

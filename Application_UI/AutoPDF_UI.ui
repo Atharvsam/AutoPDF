@@ -17,7 +17,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(81, 74, 74)</string>
+   <string notr="true">background-color:rgb(255, 176, 123)</string>
   </property>
   <widget class="QLabel" name="previewImageLabel">
    <property name="geometry">
@@ -264,6 +264,48 @@ color: rgb(125, 20, 132);</string>
    </property>
    <property name="text">
     <string>Detect Faces</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="logoLabel">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>390</y>
+     <width>261</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>480</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255, 176, 123)</string>
+   </property>
+   <property name="text">
+    <string>Android Integration</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>454</x>
+     <y>550</y>
+     <width>101</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Coming Soon!</string>
    </property>
   </widget>
  </widget>
