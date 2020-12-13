@@ -21,6 +21,9 @@ During these Corona Times, we have to submit all our assignments, homeworks and 
 - PIL
 ```python -m pip install PIL```
 
+## Execution of the Project
+```python AutoPDF_MAIN.py```
+
 ## FEATURES (Some Will Get Implemented Soon) Android Integration Possible Soon!!!
 - Black and white filter
 - Auto Crop
